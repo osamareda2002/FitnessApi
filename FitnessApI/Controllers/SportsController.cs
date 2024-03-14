@@ -1,5 +1,6 @@
 ﻿using FitnessApI.Dtos;
 using FitnessApI.Models;
+using FitnessApI.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -11,15 +12,18 @@ namespace FitnessApI.Controllers
     public class SportsController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
+        
 
         public SportsController(ApplicationDbContext context)
         {
             _context = context;
+            
         }
 
         [HttpGet]
         public async Task<IActionResult> GetAllAsync()
         {
+            
             var sports = await _context.Sports.ToListAsync();
             return Ok(sports);
         }

@@ -4,6 +4,7 @@ using FitnessApI.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FitnessApI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240313111139_foodMeasurment")]
+    partial class foodMeasurment
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -30,38 +33,38 @@ namespace FitnessApI.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("FoodId"));
 
-                    b.Property<double>("Calories")
-                        .HasColumnType("float");
+                    b.Property<int>("Calories")
+                        .HasColumnType("int");
 
-                    b.Property<double>("Carbs")
-                        .HasColumnType("float");
+                    b.Property<int>("Carbs")
+                        .HasColumnType("int");
 
                     b.Property<string>("Category")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("Fat")
-                        .HasColumnType("float");
+                    b.Property<int>("Fat")
+                        .HasColumnType("int");
 
-                    b.Property<double>("Fiber")
-                        .HasColumnType("float");
+                    b.Property<int>("Fiber")
+                        .HasColumnType("int");
 
                     b.Property<string>("FoodName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("Grams")
-                        .HasColumnType("float");
+                    b.Property<int>("Grams")
+                        .HasColumnType("int");
 
                     b.Property<string>("Measure")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("Protein")
-                        .HasColumnType("float");
+                    b.Property<int>("Protein")
+                        .HasColumnType("int");
 
-                    b.Property<double>("Sat_Fat")
-                        .HasColumnType("float");
+                    b.Property<int>("Sat_Fat")
+                        .HasColumnType("int");
 
                     b.HasKey("FoodId");
 

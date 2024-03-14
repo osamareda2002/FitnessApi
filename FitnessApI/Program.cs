@@ -1,4 +1,6 @@
+using FitnessApI.Dtos;
 using FitnessApI.Models;
+using FitnessApI.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace FitnessApI
@@ -13,9 +15,18 @@ namespace FitnessApI
 
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(connectionString));
-
+            
+            /*
+            builder.Services.AddScoped<IImportDataFromExcelService, ImportDataFromExcelService>();
             // Add services to the container.
 
+            var serviceProvider = builder.Services.BuildServiceProvider();
+
+            var importService = serviceProvider.GetRequiredService<IImportDataFromExcelService>();
+
+            importService.ReadCsvFile();
+            */
+            
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
@@ -33,13 +44,15 @@ namespace FitnessApI
 
             app.UseHttpsRedirection();
 
-
+            app.UseCors(c => c.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin().DisallowCredentials());
 
             app.UseAuthorization();
 
 
             app.MapControllers();
 
+            
+            
             app.Run();
         }
     }
