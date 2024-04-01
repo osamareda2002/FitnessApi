@@ -4,6 +4,7 @@ using FitnessApI.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FitnessApI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240327175109_changeDateOnlyToDateTime")]
+    partial class changeDateOnlyToDateTime
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -37,7 +40,7 @@ namespace FitnessApI.Migrations
 
                     b.HasIndex("ActivitiestraineeId", "Activitiesdate");
 
-                    b.ToTable("DailyActivityFood", (string)null);
+                    b.ToTable("DailyActivityFood");
                 });
 
             modelBuilder.Entity("DailyActivitySport", b =>
@@ -55,7 +58,7 @@ namespace FitnessApI.Migrations
 
                     b.HasIndex("ActivitiestraineeId", "Activitiesdate");
 
-                    b.ToTable("DailyActivitySport", (string)null);
+                    b.ToTable("DailyActivitySport");
                 });
 
             modelBuilder.Entity("FitnessApI.Models.DailyActivity", b =>
@@ -68,7 +71,7 @@ namespace FitnessApI.Migrations
 
                     b.HasKey("traineeId", "date");
 
-                    b.ToTable("DailyActivities", (string)null);
+                    b.ToTable("DailyActivities");
                 });
 
             modelBuilder.Entity("FitnessApI.Models.Food", b =>
@@ -117,7 +120,7 @@ namespace FitnessApI.Migrations
 
                     b.HasKey("FoodId");
 
-                    b.ToTable("Foods", (string)null);
+                    b.ToTable("Foods");
                 });
 
             modelBuilder.Entity("FitnessApI.Models.FoodReport", b =>
@@ -141,7 +144,7 @@ namespace FitnessApI.Migrations
 
                     b.HasIndex("FoodId");
 
-                    b.ToTable("FoodReports", (string)null);
+                    b.ToTable("FoodReports");
                 });
 
             modelBuilder.Entity("FitnessApI.Models.Sport", b =>
@@ -161,7 +164,7 @@ namespace FitnessApI.Migrations
 
                     b.HasKey("SportId");
 
-                    b.ToTable("Sports", (string)null);
+                    b.ToTable("Sports");
                 });
 
             modelBuilder.Entity("FitnessApI.Models.SportReport", b =>
@@ -185,7 +188,7 @@ namespace FitnessApI.Migrations
 
                     b.HasIndex("SportId");
 
-                    b.ToTable("SportReports", (string)null);
+                    b.ToTable("SportReports");
                 });
 
             modelBuilder.Entity("FitnessApI.Models.Trainee", b =>
@@ -253,7 +256,7 @@ namespace FitnessApI.Migrations
 
                     b.HasKey("TraineeId");
 
-                    b.ToTable("Trainees", (string)null);
+                    b.ToTable("Trainees");
                 });
 
             modelBuilder.Entity("DailyActivityFood", b =>

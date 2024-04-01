@@ -13,6 +13,8 @@
         public double Fiber { get; set; }
         public double Carbs { get; set; }
         public string Category { get; set; }
+        //public int Quantity { get; set; }
+        //public List<DailyActivity> Activities { get; set; }
 
     }
 }

@@ -4,6 +4,7 @@ using FitnessApI.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FitnessApI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240316150316_addDailyActivity")]
+    partial class addDailyActivity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -30,14 +33,14 @@ namespace FitnessApI.Migrations
                     b.Property<int>("ActivitiestraineeId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("Activitiesdate")
-                        .HasColumnType("datetime2");
+                    b.Property<DateOnly>("Activitiesdate")
+                        .HasColumnType("date");
 
                     b.HasKey("foodsFoodId", "ActivitiestraineeId", "Activitiesdate");
 
                     b.HasIndex("ActivitiestraineeId", "Activitiesdate");
 
-                    b.ToTable("DailyActivityFood", (string)null);
+                    b.ToTable("DailyActivityFood");
                 });
 
             modelBuilder.Entity("DailyActivitySport", b =>
@@ -48,14 +51,14 @@ namespace FitnessApI.Migrations
                     b.Property<int>("ActivitiestraineeId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("Activitiesdate")
-                        .HasColumnType("datetime2");
+                    b.Property<DateOnly>("Activitiesdate")
+                        .HasColumnType("date");
 
                     b.HasKey("sportsSportId", "ActivitiestraineeId", "Activitiesdate");
 
                     b.HasIndex("ActivitiestraineeId", "Activitiesdate");
 
-                    b.ToTable("DailyActivitySport", (string)null);
+                    b.ToTable("DailyActivitySport");
                 });
 
             modelBuilder.Entity("FitnessApI.Models.DailyActivity", b =>
@@ -63,12 +66,12 @@ namespace FitnessApI.Migrations
                     b.Property<int>("traineeId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("date")
-                        .HasColumnType("datetime2");
+                    b.Property<DateOnly>("date")
+                        .HasColumnType("date");
 
                     b.HasKey("traineeId", "date");
 
-                    b.ToTable("DailyActivities", (string)null);
+                    b.ToTable("DailyActivities");
                 });
 
             modelBuilder.Entity("FitnessApI.Models.Food", b =>
@@ -117,7 +120,7 @@ namespace FitnessApI.Migrations
 
                     b.HasKey("FoodId");
 
-                    b.ToTable("Foods", (string)null);
+                    b.ToTable("Foods");
                 });
 
             modelBuilder.Entity("FitnessApI.Models.FoodReport", b =>
@@ -141,7 +144,7 @@ namespace FitnessApI.Migrations
 
                     b.HasIndex("FoodId");
 
-                    b.ToTable("FoodReports", (string)null);
+                    b.ToTable("FoodReports");
                 });
 
             modelBuilder.Entity("FitnessApI.Models.Sport", b =>
@@ -161,7 +164,7 @@ namespace FitnessApI.Migrations
 
                     b.HasKey("SportId");
 
-                    b.ToTable("Sports", (string)null);
+                    b.ToTable("Sports");
                 });
 
             modelBuilder.Entity("FitnessApI.Models.SportReport", b =>
@@ -185,7 +188,7 @@ namespace FitnessApI.Migrations
 
                     b.HasIndex("SportId");
 
-                    b.ToTable("SportReports", (string)null);
+                    b.ToTable("SportReports");
                 });
 
             modelBuilder.Entity("FitnessApI.Models.Trainee", b =>
@@ -253,7 +256,7 @@ namespace FitnessApI.Migrations
 
                     b.HasKey("TraineeId");
 
-                    b.ToTable("Trainees", (string)null);
+                    b.ToTable("Trainees");
                 });
 
             modelBuilder.Entity("DailyActivityFood", b =>
